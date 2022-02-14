@@ -1,0 +1,30 @@
+.form-container  {
+  padding: 36px;
+}
+
+.form {
+  display: grid;
+  grid-template: 40px 40px / 1fr 1fr;
+  gap: 17px
+}
+
+.input-field {
+  font-family: "Karla", sans-serif;
+  border-radius: 5px;
+  border: 1px solid #D5D4D8;
+  text-indent: 5px;
+}
+
+.submit-button {
+  font-family: "Karla", sans-serif;
+  grid-column: 1 / -1;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #711F8D 1.14%, #A818DA 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 15px;
+  height: fit-content;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
