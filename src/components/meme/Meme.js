@@ -10,7 +10,7 @@ export default function Meme() {
     randomImage: '',
   })
 
-  const [allMemeImages, setAllMemeImages] = useState(memesData)
+  const [allMemeImages] = useState(memesData)
 
   const getMemeImage = () => {
     const memesArray = allMemeImages.data.memes
@@ -25,6 +25,15 @@ export default function Meme() {
       }))
   }
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      [name]: value,
+    }))
+  }
+
   return (
       <div className="meme-container">
         <div className="form">
@@ -32,11 +41,17 @@ export default function Meme() {
               className="input-field"
               type="text"
               placeholder="Top text"
+              name="topText"
+              value={meme.topText}
+              onChange={handleChange}
           />
           <input
               className="input-field"
               type="text"
               placeholder="Bottom text"
+              name="bottomText"
+              value={meme.bottomText}
+              onChange={handleChange}
           />
           <button
               className="submit-button"
@@ -46,8 +61,12 @@ export default function Meme() {
             Get a new meme image 🖼
           </button>
         </div>
-        { meme.randomImage.length > 0 &&
-          <img src={meme.randomImage} alt="meme" className="meme-image"/>
+        {meme.randomImage.length > 0 &&
+          <div className="meme">
+            <img src={meme.randomImage} alt="meme" className="meme-image"/>
+            <h2 className="meme-text top">{meme.topText}</h2>
+            <h2 className="meme-text bottom">{meme.bottomText}</h2>
+          </div>
         }
       </div>
   )
